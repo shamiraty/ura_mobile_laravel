@@ -1,0 +1,15 @@
+1. Excel import payroll
+composer require maatwebsite/excel
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag="config"
+
+
+2. Manually, Create the PayrollImport.php file: Inside the app/Imports directory, create a file named PayrollImport.php and add the necessary code.
+
+
+3. Locate the php.ini file (it might be in your etc/php/{version}/cli or etc/php/{version}/apache2 depending on your server setup).
+- max_execution_time = 300  ; 300 seconds = 5 minutes
+- You can also set a higher execution time directly within your PHP script using set_time_limit():
+
+php
+Copy code
+set_time_limit(300);  // Sets the max execution time to 300 se
