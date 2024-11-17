@@ -47,5 +47,15 @@ class User extends Authenticatable
 {
     return $this->hasOne(Employee::class);
 }
+// app/Models/User.php
+
+// Check if the user has any of the given roles
+public function hasAnyRole(array $roles): bool
+{
+    $employee = $this->employee;
+
+    // Check if the employee's role is in the given roles
+    return $employee && in_array($employee->role->role, $roles);  // assuming role is linked to employee
+}
 
 }

@@ -2,7 +2,8 @@
 @section('title', 'Add Person Reset')
 @section('content')
     <div class="card">
-        <div class="card-header">
+    <div class="card-header bg-primary text-info">
+        <p class="text-white">PIN Reset Application</p>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -39,7 +40,7 @@
                     <label for="simu">Simu</label>
                     <input type="text" name="simu" id="simu" class="form-control" required>
                 </div>
-{{--
+               {{--
                 <div class="form-group">
                     <label for="status">Status</label>
                     <input type="checkbox" name="status" id="status" class="form-control" value="1">
@@ -49,7 +50,7 @@
                 <!-- Hidden field for user_id, capturing the logged-in user automatically -->
                 <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
-                <button type="submit" class="btn btn-primary">Add Person Reset</button>
+                <button type="submit" class="btn btn-primary btn-sm mt-3">Add Person Reset</button>
             </form>
         </div>
     </div>

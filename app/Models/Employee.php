@@ -28,5 +28,18 @@ class Employee extends Model
     {
         return $this->belongsTo(District::class);
     }
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+// Relationship to Branch
+public function branch()
+{
+    return $this->belongsTo(Branch::class);
+}
+
+// Relationship to District
+
+// Relationship to Role
+
 }

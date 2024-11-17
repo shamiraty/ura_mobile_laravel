@@ -2,6 +2,9 @@
 @section('title', 'Add Branch')
 @section('content')
     <div class="card">
+    <div class="card-header bg-primary text-info">
+            <p class="text-white">Add Branch</p>
+        </div>
         <div class="card-body">
             @if ($errors->any())
                 <div class="alert alert-danger">

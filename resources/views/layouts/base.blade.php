@@ -48,32 +48,34 @@
     
     <!-- main css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet">
     
     <!-- SweetAlert CSS CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
-<!-- Make sure to include Select2's CSS and JS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Make sure to include Select2's CSS and JS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+</head>
 
-
-
-
-
-  </head>
-
-
+<style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Using Roboto font */
+            font-size: 18px; /* Set font size to 20px */
+        }
+    </style>
 <body>
 <aside class="sidebar">
   <button type="button" class="sidebar-close-btn">
     <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
   </button>
   <div>
-    <a href="index.html" class="sidebar-logo bg-primary text-white">
+    <a href="index.html" class="sidebar-logo text-white bg-primary">
     {{--<img src="{{ asset('assets/images/uralogo.png') }}" alt="site logo" class="light-logo">
    <img src="{{ asset('assets/images/logo-light.png') }}" alt="site logo" class="dark-logo">
    <img src="{{ asset('assets/images/logo-icon.png') }}" alt="site logo" class="logo-icon">
---}}
-  MOBILE
+--}} <strong>MOBILE</strong>
     </a>
   </div>
   <div class="sidebar-menu-area">
@@ -87,15 +89,13 @@
         </a>
         <ul class="sidebar-submenu">
           <li>
-            <a href="link1.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Link 1</a>
-          </li>
-          <li>
-            <a href="link2.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Link 2</a>
+            <a href="{{ route('dashboard') }}"><i class="ri-home-line"></i> Dashboard</a>
           </li>
         </ul>
       </li>
 
-      <!-- Administration Section -->
+      <!-- Administration Section (For Admin only) -->
+      @if(auth()->user()->hasAnyRole(['admin']))
       <li class="dropdown">
         <a href="javascript:void(0)">
           <iconify-icon icon="material-symbols:admin-panel-settings" class="menu-icon"></iconify-icon>
@@ -104,44 +104,63 @@
         <ul class="sidebar-submenu">
           <li><a href="{{ route('branches.create') }}"><i class="ri-building-line"></i> Create Branch</a></li>
           <li><a href="{{ route('districts.create') }}"><i class="ri-map-pin-line"></i> Create District</a></li>
-          <li><a href="{{ route('roles.create') }}"><i class="ri-identity-card-line"></i> Create Role</a></li>
+          <li><a href="{{ route('roles.create') }}"><i class="ri-task-line"></i> Create Role</a></li>
           <li><a href="{{ route('posts.create') }}"><i class="ri-briefcase-line"></i> Create Post</a></li>
           <li><a href="{{ route('users.create') }}"><i class="ri-user-add-line"></i> Create User</a></li>
           <li><a href="{{ route('employees.create') }}"><i class="ri-user-settings-line"></i> Create Employee</a></li>
+          <li><a href="{{ route('payrolls.create') }}"><i class="ri-upload-line"></i> Upload Members</a></li>
         </ul>
       </li>
+      @endif
 
-      <!-- Applications Section -->
+      <!-- Applications Section (For Authenticated users) -->
+      @if(auth()->check())
       <li class="dropdown">
         <a href="javascript:void(0)">
-          <iconify-icon icon="carbon:applications" class="menu-icon"></iconify-icon>
+          <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
           <span>Applications</span>
         </a>
         <ul class="sidebar-submenu">
-          <li><a href="{{ route('persons.create') }}"><i class="ri-person-add-line"></i> New User</a></li>
-          <li><a href="{{ route('personResets.create') }}"><i class="ri-refresh-line"></i> Reset User</a></li>
+          <li><a href="{{ route('persons.create') }}"><i class="ri-user-add-line"></i> New User</a></li>
+          <li><a href="{{ route('personResets.create') }}"><i class="ri-refresh-line"></i>PIN Reset</a></li>
         </ul>
       </li>
+      @endif
 
-      <!-- Applied Section -->
+      <!-- Applied Section (For Authenticated users) -->
+      @if(auth()->check())
       <li class="dropdown">
         <a href="javascript:void(0)">
           <iconify-icon icon="carbon:checkmark" class="menu-icon"></iconify-icon>
-          <span>Applied</span>
+          <span>Mobile Users</span>
         </a>
         <ul class="sidebar-submenu">
-          <li><a href="link3.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Link 3</a></li>
-          <li><a href="link4.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Link 4</a></li>
+          <li><a href="{{ route('persons.index') }}"><i class="ri-list-check"></i>New Users</a></li>
+          <li><a href="{{ route('personResets.index') }}"><i class="ri-refresh-line"></i>PIN Reset</a></li>
         </ul>
       </li>
+      @endif
+
+
+          <!-- Applied Section (For Authenticated users) -->
+          @if(auth()->check())
+      <li class="dropdown">
+        <a href="javascript:void(0)">
+        <iconify-icon icon="solar:pie-chart-outline" class="menu-icon"></iconify-icon>
+          <span>Analytics</span>
+        </a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{ route('analytics.index') }}"><iconify-icon icon="solar:pie-chart-outline" class="menu-icon"></iconify-icon>General Analytics</a></li>
+        </ul>
+      </li>
+      @endif
 
     </ul>
-  </div>
+</div>
 </aside>
 
-
 <main class="dashboard-main">
-  <div class="navbar-header">
+  <div class="navbar-header shadow-4">
   <div class="row align-items-center justify-content-between">
     <div class="col-auto">
       <div class="d-flex flex-wrap align-items-center gap-4">
@@ -166,7 +185,7 @@
         </button>
 
         <!-- Profile Dropdown -->
-        <div class="col-auto">
+<div class="col-auto">
     <div class="d-flex flex-wrap align-items-center gap-3">
         <!-- Profile Dropdown -->
         <div class="dropdown">
@@ -176,10 +195,10 @@
             <div class="dropdown-menu to-top dropdown-menu-sm">
                 <!-- Profile Header -->
                 <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
-                <div>
-    <h6 class="text-lg text-primary-light fw-semibold mb-2">{{ Auth::user()->email }}</h6>
-    <span class="text-secondary-light fw-medium text-sm">{{ Auth::user()->employee->role_id->name ?? 'Role Not Assigned' }}</span>
-</div>
+                    <div>
+                        <h6 class="text-lg text-primary-light fw-semibold mb-2">{{ Auth::user()->email }}</h6>
+                        <span class="text-secondary-light fw-medium text-sm">Role: {{ Auth::user()->employee->role->role ?? 'Role Not Assigned' }}</span>
+                    </div>
 
                     <button type="button" class="hover-text-danger">
                         <iconify-icon icon="radix-icons:cross-1" class="icon text-secondary text-xl"></iconify-icon>
@@ -189,18 +208,8 @@
                 <!-- Dropdown Menu Items -->
                 <ul class="to-top-list">
                     <li>
-                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="#">
+                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="{{ route('profile') }}">
                             <iconify-icon icon="solar:user-linear" class="icon text-xl text-secondary"></iconify-icon> My Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="#">
-                            <iconify-icon icon="tabler:message-check" class="icon text-xl text-secondary"></iconify-icon> Inbox
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3" href="#">
-                            <iconify-icon icon="icon-park-outline:setting-two" class="icon text-xl text-secondary"></iconify-icon> Setting
                         </a>
                     </li>
                     <li>
@@ -218,13 +227,16 @@
     </div>
 </div>
 
+    </div>
+</div>
+
 
     </div>
   </div>
 </div> 
 
-  <div class="dashboard-main-body">
-
+  <div class="dashboard-main-body mt-2">
+    <!--
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
   <h6 class="fw-semibold mb-0">Alerts</h6>
   <ul class="d-flex align-items-center gap-2">
@@ -236,32 +248,34 @@
     </li>
   </ul>
 </div>
-    <div class="row gy-4 mb-3">
+-->
+    {{--<div class="row gy-4 mb-3">
         <div class="col-lg-12">
             <div class="card h-100 p-0">
-                <div class="card-header border-bottom bg-base py-16 px-24">
-                </div>
+                <div class="card-header py-16 px-24 w-100 bg-info">
+                </div>--}}
                 <div class="container-fluid">
                 @yield('content')
                 </div>                    
                 </div>
             </div>
+        {{--</div>
+    </div>
+  </div>--}}
+</main>
+<footer class="d-footer text-center">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-auto">
+            <p class="mb-0">© 2024 URA SACCOS LTD. All Rights Reserved.</p>
+        </div>
+        <div class="col-auto">
+            <p class="mb-0">Made by <span class="text-primary-600">URASACCOS ICT</span></p>
         </div>
     </div>
-  </div>
-
-  
-  <footer class="d-footer">
-  <div class="row align-items-center justify-content-between">
-    <div class="col-auto">
-      <p class="mb-0">© 2024 WowDash. All Rights Reserved.</p>
-    </div>
-    <div class="col-auto">
-      <p class="mb-0">Made by <span class="text-primary-600">wowtheme7</span></p>
-    </div>
-  </div>
 </footer>
-</main>
+
+
+ 
     
     <!-- jQuery library js -->
     <script src="{{ asset('assets/js/lib/jquery-3.7.1.min.js') }}"></script>
@@ -306,8 +320,15 @@
     <!-- SweetAlert JS CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script>
-    let table = new DataTable('#dataTable');
-  </script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize DataTable for both #dataTable and #myTable
+        let dataTable = new DataTable('#dataTable');
+        let myTable = new DataTable('#myTable');
+    });
+</script>
+
+
+
     <!-- SweetAlert Success/Error Notification -->
     @if(session('success'))
         <script>

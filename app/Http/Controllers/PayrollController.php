@@ -14,6 +14,7 @@ class PayrollController extends Controller
         return view('administration.payroll');
     }
 
+    //add single payroll
     public function store(Request $request)
     {
         $request->validate([
@@ -39,6 +40,7 @@ class PayrollController extends Controller
         }
     }
 
+    //import payroll
     public function import(Request $request)
     {
         $request->validate([

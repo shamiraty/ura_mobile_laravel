@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <h3>Add Person</h3>
+        <div class="card-header bg-primary text-info">
+            <p class="text-white">New Mobile Application</p>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -34,18 +34,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image">Image</label>
+                    <label for="image">Attachment Form</label>
                     <input type="file" name="image" id="image" class="form-control" accept="image/*">
                 </div>
 
                 <div class="form-group">
-                    <label for="simu">Simu</label>
+                    <label for="simu">Phone Number</label>
                     <input type="text" name="simu" id="simu" class="form-control" required>
                 </div>
 
                 <!-- Removed status field, no longer required in the form -->
 
-                <button type="submit" class="btn btn-primary">Add Person</button>
+                <button type="submit" class="btn btn-primary mt-3 btn-sm">Register</button>
             </form>
         </div>
     </div>

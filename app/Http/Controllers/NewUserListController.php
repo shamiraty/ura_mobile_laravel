@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;  // Use to get the current authenticated us
 use Illuminate\Support\Facades\DB;
 use App\Models\PersonNew;
 use App\Models\Employee;
-use App\Models\Branch;  // Add this to get the Branch model
+use App\Models\Branch;  
 
 class NewUserListController extends Controller
 {
@@ -47,10 +47,14 @@ class NewUserListController extends Controller
                 ->get();
         }
 
-        // Return view with the fetched records
+        // Eager load the payroll data along with person data
+        $persons = PersonNew::with('payroll')->get();
+
+        // Return view with the fetched records and associated payroll data
         return view('application_list.new_user_list', compact('persons'));
     }
 
+    //update status
     public function toggleStatus($id)
     {
         $person = DB::table('person_news')->where('id', $id)->first();
@@ -65,6 +69,7 @@ class NewUserListController extends Controller
         return redirect()->route('persons.index')->with('error', 'Person not found!');
     }
 
+    //show person_new with payroll records details on modal popup
     public function show($id)
     {
         // Fetch the person data with user info and payroll
@@ -73,6 +78,7 @@ class NewUserListController extends Controller
         return response()->json($person);
     }
 
+    //show employee who upload record user with employee record
     public function fetchEmployeeDetails($userId)
     {
         $employee = Employee::with(['role', 'post', 'district'])

@@ -7,6 +7,7 @@ use App\Models\PersonReset;
 use App\Models\Payroll;
 use Illuminate\Database\QueryException;
 
+//here  are users  who forgot PIN
 class PersonResetController extends Controller
 {
     public function create()
@@ -51,10 +52,10 @@ class PersonResetController extends Controller
                 'registered_date' => now(),
             ]);
 
-            return redirect()->route('personResets.create')->with('success', 'Person Reset record added successfully!');
+            return redirect()->route('personResets.create')->with('success', 'Record added successfully!');
         } catch (QueryException $e) {
             // Catch duplicate entry or other database errors
-            return redirect()->route('personResets.create')->with('error', 'Error adding person reset: ' . $e->getMessage());
+            return redirect()->route('personResets.create')->with('error', 'Error adding Record: ' . $e->getMessage());
         } catch (\Exception $e) {
             // Catch any other exceptions
             return redirect()->route('personResets.create')->with('error', 'An unexpected error occurred: ' . $e->getMessage());

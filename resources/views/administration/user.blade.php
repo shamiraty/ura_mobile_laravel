@@ -2,8 +2,8 @@
 @section('title', 'Add User')
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <h6>Add User</h6>
+    <div class="card-header bg-primary text-info">
+            <p class="text-white">Add User</p>
         </div>
         <div class="card-body">
             @if ($errors->any())

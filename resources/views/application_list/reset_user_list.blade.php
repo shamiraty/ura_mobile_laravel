@@ -1,7 +1,5 @@
 @extends('layouts.base')
-
 @section('title', 'Person Reset List')
-
 @section('content')
 {{--
 <form method="get" class="mb-4">
@@ -26,72 +24,67 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 </div>
-
 <div class="row gy-4">
     <!-- Total Records Card -->
-    <div class="col-xxl-4 col-sm-6">
-        <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-1">
-            <div class="card-body p-0">
-                <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+    <div class="col-xl-3 col-sm-6">
+        <div class="card p-2 shadow-sm radius-8 border bg-light">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                        <span class="mb-0 w-48-px h-48-px bg-primary-600 flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6 mb-0">
+                        <span class="mb-0 w-40px h-40px bg-white text-primary d-flex justify-content-center align-items-center rounded-circle">
                             <iconify-icon icon="mdi:database" class="icon"></iconify-icon>
                         </span>
                         <div>
-                            <span class="mb-2 fw-medium text-secondary-light text-sm">Total Records</span>
-                            <h6 class="fw-semibold">{{ $personResets->count() }}</h6>
+                            <span class="fw-medium text-secondary text-sm">Total Users</span>
+                            <h5 class="fw-semibold text-primary mb-0">{{ $personResets->count() }}</h5>
                         </div>
                     </div>
                 </div>
-                <p class="text-sm mb-0">Total number of records in the system</p>
             </div>
         </div>
     </div>
-
     <!-- Active Records Card -->
-    <div class="col-xxl-4 col-sm-6">
-        <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-1">
-            <div class="card-body p-0">
-                <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+    <div class="col-xl-3 col-sm-6">
+        <div class="card p-2 shadow-sm radius-8 border bg-light">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                        <span class="mb-0 w-48-px h-48-px bg-success flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6 mb-0">
-                            <iconify-icon icon="mdi:check-circle" class="icon"></iconify-icon>
+                        <span class="mb-0 w-40px h-40px bg-white text-primary d-flex justify-content-center align-items-center rounded-circle">
+                            <iconify-icon icon="mdi:check-circle" class="icon text-success"></iconify-icon>
                         </span>
                         <div>
-                            <span class="mb-2 fw-medium text-secondary-light text-sm">Active Records</span>
-                            <h6 class="fw-semibold">{{ $personResets->where('status', true)->count() }}</h6>
+                            <span class="fw-medium text-secondary text-sm">Registered Users</span>
+                            <h5 class="fw-semibold text-primary mb-0">{{ $personResets->where('status', true)->count() }}</h5>
                         </div>
                     </div>
                 </div>
-                <p class="text-sm mb-0">Active records in the system</p>
             </div>
         </div>
     </div>
-
     <!-- Inactive Records Card -->
-    <div class="col-xxl-4 col-sm-6">
-        <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-1">
-            <div class="card-body p-0">
-                <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+    <div class="col-xl-3 col-sm-6">
+        <div class="card p-2 shadow-sm radius-8 border bg-light">
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                        <span class="mb-0 w-48-px h-48-px bg-danger flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6 mb-0">
-                            <iconify-icon icon="mdi:cancel" class="icon"></iconify-icon>
+                        <span class="mb-0 w-40px h-40px bg-white text-primary d-flex justify-content-center align-items-center rounded-circle">
+                            <iconify-icon icon="mdi:cancel" class="icon text-danger"></iconify-icon>
                         </span>
                         <div>
-                            <span class="mb-2 fw-medium text-secondary-light text-sm">Inactive Records</span>
-                            <h6 class="fw-semibold">{{ $personResets->where('status', false)->count() }}</h6>
+                            <span class="fw-medium text-secondary text-sm">Unregistered Users</span>
+                            <h5 class="fw-semibold text-primary mb-0">{{ $personResets->where('status', false)->count() }}</h5>
                         </div>
                     </div>
                 </div>
-                <p class="text-sm mb-0">Inactive records in the system</p>
+
             </div>
         </div>
     </div>
 </div>
 
-<div class="card basic-data-table mt-3">
-      <div class="card-header bg-light">
-        <h5 class="card-title mb-0">Default Datatables</h5>
+
+<div class="card basic-data-table mt-3 shadow-4">
+      <div class="card-header bg-info">
       </div>
       <div class="card-body">
 <div class="table-responsive">
@@ -100,9 +93,10 @@
         <tr>
             <th>S/N</th>
             <th>Details</th>
-            <th>Check Number</th>
-            <th>Simu</th>
-            <th>Registered Date</th>
+            <th>C-Number</th>
+            <th>Name</th>         
+            <th>Phone</th>
+            <th>Date</th>
             <th>Added By</th>
             <th>Status</th>
             <th>Actions</th>
@@ -119,6 +113,7 @@
                     </button>
                 </td>
                 <td>{{ $personReset->check_number }}</td>
+                <td>{{ $personReset->payroll_fname ?? 'N/A' }} {{ $personReset->payroll_mname ?? 'N/A' }} {{ $personReset->payroll_lname ?? 'N/A' }}</td>
                 <td>{{ $personReset->simu ?? 'N/A' }}</td>
                 <td>{{ $personReset->registered_date }}</td>
                 <td><button 
@@ -140,10 +135,13 @@
                     <!-- Button for status toggle with respective button style -->
                     <form action="{{ route('personResets.toggleStatus', $personReset->id) }}" method="POST" class="d-inline">
                         @csrf
-                        <button type="submit" class="btn btn-outline-{{ $personReset->status ? 'danger' : 'success' }}-600 px-20 d-flex align-items-center  btn-sm">
-                            <iconify-icon icon="mingcute:square-arrow-{{ $personReset->status ? 'down' : 'up' }}-line" class="text-xl"></iconify-icon>
-                            {{ $personReset->status ? 'Deactivate' : 'Activate' }}
-                        </button>
+                        <button type="submit" 
+        class="btn btn-outline-{{ $personReset->status ? 'danger' : 'success' }}-600 px-20 d-flex align-items-center btn-sm"
+        @if(!auth()->user()->hasAnyRole(['admin', 'tehama'])) disabled @endif>
+    <iconify-icon icon="mingcute:square-arrow-{{ $personReset->status ? 'down' : 'up' }}-line" class="text-xl"></iconify-icon>
+    {{ auth()->user()->hasAnyRole(['admin', 'tehama']) ? ($personReset->status ? 'Deactivate' : 'Activate') : 'No Action' }}
+</button>
+
                     </form>
                 </td>
             </tr>
@@ -172,8 +170,8 @@
                     <!-- Details Section (Right) -->
                     <div class="col-xl-6">
                         <div class="card radius-12 overflow-hidden h-100 d-flex align-items-center flex-nowrap flex-row-reverse">
-                            <div class="card-body p-16 flex-grow-1">
-                                <h6 class="card-title text-lg text-primary-light mb-6">Person PIN Reset Information</h6>
+                            <div class="card-body p-5 flex-grow-1">
+                                <h6 class="card-title text-lg text-primary-light mb-6">PIN Reset Information</h6>
                                 <ul class="list-group">
                                     <li class="list-group-item border text-secondary-light p-16 bg-neutral-50 border-bottom-0">
                                         <strong>Check Number:</strong> <span id="modalCheckNumber"></span>
@@ -238,18 +236,6 @@
         });
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="modal fade" id="employeeDetailsModal" tabindex="-1" aria-labelledby="employeeDetailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

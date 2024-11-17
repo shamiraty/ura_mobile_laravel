@@ -13,3 +13,10 @@ php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" -
 php
 Copy code
 set_time_limit(300);  // Sets the max execution time to 300 se
+
+
+
+
+AUTHENTICATION  SECURITY  BASED ON ROLE
+
+https://chatgpt.com/c/6739a0d6-3d6c-8004-87a4-a2b5de211449

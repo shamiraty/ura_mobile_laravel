@@ -6,6 +6,7 @@ use App\Models\PersonNew;
 use App\Models\Payroll;
 use Illuminate\Database\QueryException;
 
+//here is new user URA mobile request
 class PersonController extends Controller
 {
     // Show the form to create a new person
@@ -53,9 +54,9 @@ class PersonController extends Controller
                 'registered_date' => now(),
             ]);
 
-            return redirect()->route('persons.create')->with('success', 'Person record added successfully!');
+            return redirect()->route('persons.create')->with('success', 'Record added successfully!');
         } catch (\Exception $e) {
-            return redirect()->route('persons.create')->with('error', 'Error adding person: ' . $e->getMessage());
+            return redirect()->route('persons.create')->with('error', 'Error adding record: ' . $e->getMessage());
         }
     }
 
@@ -67,7 +68,7 @@ class PersonController extends Controller
 
         // Check if the person exists
         if (!$person) {
-            return redirect()->back()->with('error', 'Person not found');
+            return redirect()->back()->with('error', 'Record not found');
         }
 
         // Toggle the status between 'active' and 'inactive'

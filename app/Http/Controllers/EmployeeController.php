@@ -8,7 +8,6 @@ use App\Models\Role;
 use App\Models\Post;
 use App\Models\District;
 use App\Models\User;
-
 class EmployeeController extends Controller
 {
     public function create()

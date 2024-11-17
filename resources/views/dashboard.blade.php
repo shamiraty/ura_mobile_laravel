@@ -7,11 +7,11 @@
             <!-- Card 1: New User -->
             <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-lg border-0 rounded-3">
-                    <div class="card-header bg-gradient-primary text-white">
+                    <div class="card-header bg-gradient-primary text-primary">
                         <div class="d-flex justify-content-center">
-                            <iconify-icon icon="mingcute:user-follow-fill" class="icon display-3 text-secondary"></iconify-icon>
+                            <iconify-icon icon="mingcute:user-follow-fill" class="icon display-3"></iconify-icon>
                         </div>
-                        <h5 class="mt-2">NEW USER</h5>
+                        <h5 class="mt-2 text-primary">NEW USER</h5>
                     </div>
                     <div class="card-body">
                         <p class="card-text text-muted">Register for URA Mobile to get started</p>
@@ -25,11 +25,11 @@
             <!-- Card 2: Registered User -->
             <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-lg border-0 rounded-3">
-                    <div class="card-header bg-gradient-success text-white">
+                    <div class="card-header bg-gradient-success text-success">
                         <div class="d-flex justify-content-center">
-                            <iconify-icon icon="mdi:check-circle-outline" class="icon display-3 text-secondary"></iconify-icon>
+                            <iconify-icon icon="mdi:check-circle-outline" class="icon display-3 text-success"></iconify-icon>
                         </div>
-                        <h5 class="mt-2">REGISTERED USER</h5>
+                        <h5 class="mt-2 text-success">REGISTERED USER</h5>
                     </div>
                     <div class="card-body">
                         <p class="card-text text-muted">Request a new PIN or change your phone number</p>
@@ -43,15 +43,15 @@
             <!-- Card 3: Download URA Mobile Form -->
             <div class="col-md-4 mb-4">
                 <div class="card text-center shadow-lg border-0 rounded-3">
-                    <div class="card-header bg-gradient-danger text-white">
+                    <div class="card-header bg-gradient-danger text-warning">
                         <div class="d-flex justify-content-center">
                             <!-- Updated PDF icon -->
-                            <iconify-icon icon="ri:file-pdf-line" class="icon display-3 text-secondary"></iconify-icon>
+                            <iconify-icon icon="ri:file-pdf-line" class="icon display-3"></iconify-icon>
                         </div>
-                        <h5 class="mt-2">URA MOBILE FORM</h5>
+                        <h5 class="mt-2 text-warning">URA MOBILE FORM</h5>
                     </div>
                     <div class="card-body">
-                        <a href="{{ asset('img/ura_form.pdf') }}" target="_blank" class="btn btn-lg btn-outline-danger w-100 mb-3">
+                        <a href="{{ asset('img/ura_form.pdf') }}" target="_blank" class="btn btn-lg btn-outline-warning w-100 mb-3">
                             Download Form
                         </a>
                         

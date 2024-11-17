@@ -58,12 +58,11 @@
                         <label for="netAmount">Net Amount</label>
                         <input type="number" name="netAmount" id="netAmount" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Add Payroll</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-sm mt-3">Add Payroll</button>
                 </form>
             </div>
         </div>
     </div>
-
     <!-- Right Column: Import Payroll Data Form -->
     <div class="col-md-6">
         <div class="card shadow mb-4">
@@ -78,11 +77,10 @@
                         <input type="file" name="excel_file" id="excel_file" class="form-control form-control-lg" accept=".csv,.xls,.xlsx" required>
                         <small class="text-muted">Upload a CSV or Excel file to import multiple payroll records.</small>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block mt-3 btn-sm">Import Payroll Data</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-3 btn-sm">Import Payroll Data</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
